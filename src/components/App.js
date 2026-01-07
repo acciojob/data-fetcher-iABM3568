@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./../styles/App.css";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -12,14 +11,16 @@ const App = () => {
       });
   }, []);
 
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div id="main">
-      <h1>Data Fetched from API</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {!data ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <h1>Data Fetched from API</h1>
+          <pre>{JSON.stringify(data, null, 2)}</pre>
+        </>
+      )}
     </div>
   );
 };
