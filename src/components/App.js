@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./../styles/App.css";
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState("Loading...");
 
   useEffect(() => {
     fetch("https://dummyjson.com/products")
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((result) => {
-        setData(result);
+        setData(JSON.stringify(result, null, 2));
       });
   }, []);
 
@@ -16,11 +16,7 @@ const App = () => {
     <div id="main">
       {/* Do not remove the main div */}
 
-      {data && (
-        <pre>
-          {JSON.stringify(data, null, 2)}
-        </pre>
-      )}
+      <pre>{data}</pre>
 
     </div>
   );
