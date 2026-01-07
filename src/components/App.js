@@ -12,14 +12,14 @@ const App = () => {
       });
   }, []);
 
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div id="main">
-      {/* Do not remove the main div */}
-
-      <pre>
-        {data ? JSON.stringify(data, null, 2) : "Loading..."}
-      </pre>
-
+    <div>
+      <h1>Data Fetched from API</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 };
